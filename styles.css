@@ -34,15 +34,11 @@
   flex: 1;
 }
 
-.lastrow>* {
-
-}
-
 #zero {
   flex: 2.25;
 }
 
-.lastrow #decimal, .lastrow #equals {
+.lastrow #decimalkey, .lastrow #equalskey {
   flex: 1;
 }
 
