@@ -1,0 +1,53 @@
+#calculator {
+  border: solid black;
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
+#screen {
+  flex: 1;
+  background-color: whitesmoke;
+}
+
+#panel {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+#calculator button {
+  border-radius: 5px;
+}
+
+#panel>* {
+  flex: 1;
+}
+
+.row, .lastrow {
+  display: flex;
+}
+
+.row>* {
+  flex: 1;
+}
+
+.lastrow>* {
+
+}
+
+#zero {
+  flex: 2.25;
+}
+
+.lastrow #decimal, .lastrow #equals {
+  flex: 1;
+}
+
+
+
+
+
+
