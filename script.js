@@ -48,6 +48,49 @@ seven.addEventListener('click', inputKey);
 eight.addEventListener('click', inputKey);
 nine.addEventListener('click', inputKey);
 
+document.addEventListener('keydown', function(event) {
+  if (currentvalue == '0') {
+    currentvalue = '';
+  } else if (operating) {
+    currentvalue = '';
+    operating = false;
+  } else if (currentvalue == 'ERROR!') {
+    currentvalue = '';
+  }
+  
+  if (event.key == 1) {
+    currentvalue += '1';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 2) {
+    currentvalue += '2';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 3) {
+    currentvalue += '3';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 4) {
+    currentvalue += '4';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 5) {
+    currentvalue += '5';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 6) {
+    currentvalue += '6';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 7) {
+    currentvalue += '7';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 8) {
+    currentvalue += '8';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 9) {
+    currentvalue += '9';
+    return screen.innerText = currentvalue;
+  } else if (event.key == 0) {
+    currentvalue += '0';
+    return screen.innerText = currentvalue;
+  }
+});
+
 function inputKey(key) {
   if (currentvalue == '0') {
     currentvalue = '';
