@@ -21,7 +21,7 @@ const seven = document.getElementById('seven');
 const eight = document.getElementById('eight');
 const nine = document.getElementById('nine');
 let currentop = 0;
-let currentvalue = 0;
+let currentvalue = '0';
 let priorvalue = 0;
 let operating = false;
 
@@ -57,7 +57,7 @@ document.addEventListener('keydown', function(event) {
   } else if (currentvalue == 'ERROR!') {
     currentvalue = '';
   }
-  
+
   if (event.key == 1) {
     currentvalue += '1';
     return screen.innerText = currentvalue;
@@ -114,19 +114,19 @@ function clearCalculator() {
 function operate() {
   switch (currentop) {
     case 1:
-      currentvalue = add(priorvalue, currentvalue);
+      currentvalue = add(priorvalue, currentvalue).toString();
       screen.innerText = currentvalue;
       break;
     case 2:
-      currentvalue = subtract(priorvalue, currentvalue);
+      currentvalue = subtract(priorvalue, currentvalue).toString();
       screen.innerText = currentvalue;
       break;
     case 3:
-      currentvalue = multiply(priorvalue, currentvalue);
+      currentvalue = multiply(priorvalue, currentvalue).toString();
       screen.innerText = currentvalue;
       break;
     case 4:
-      currentvalue = divide(priorvalue, currentvalue);
+      currentvalue = divide(priorvalue, currentvalue).toString();
       screen.innerText = currentvalue;
       break;
   }
