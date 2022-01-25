@@ -1,4 +1,5 @@
 'use strict';
+const screen = document.getElementById('screen');
 const ac = document.getElementById('ac');
 const signkey = document.getElementById('signkey');
 const percentkey = document.getElementById('percentkey');
@@ -8,7 +9,7 @@ const subtractkey = document.getElementById('subtractkey');
 const addkey = document.getElementById('addkey');
 const qualskey = document.getElementById('equalskey');
 const decimalkey = document.getElementById('decimalkey');
-const screen = document.getElementById('screen');
+
 const zero = document.getElementById('zero');
 const one = document.getElementById('one');
 const two = document.getElementById('two');
@@ -19,27 +20,44 @@ const six = document.getElementById('six');
 const seven = document.getElementById('seven');
 const eight = document.getElementById('eight');
 const nine = document.getElementById('nine');
+let currentop = 0;
+let currentvalue = 0;
+let priorvalue = 0;
 
+screen.innerText = currentvalue;
 
-zero.addEventListener('click', showInDisplay);
-one.addEventListener('click', showInDisplay);
-two.addEventListener('click', showInDisplay);
-three.addEventListener('click', showInDisplay);
-four.addEventListener('click', showInDisplay);
-five.addEventListener('click', showInDisplay);
-six.addEventListener('click', showInDisplay);
-seven.addEventListener('click', showInDisplay);
-eight.addEventListener('click', showInDisplay);
-nine.addEventListener('click', showInDisplay);
+ac.addEventListener('click', clearCalculator);
 
-ac.addEventListener('click', showInDisplay);
+zero.addEventListener('click', inputKey);
+one.addEventListener('click', inputKey);
+two.addEventListener('click', inputKey);
+three.addEventListener('click', inputKey);
+four.addEventListener('click', inputKey);
+five.addEventListener('click', inputKey);
+six.addEventListener('click', inputKey);
+seven.addEventListener('click', inputKey);
+eight.addEventListener('click', inputKey);
+nine.addEventListener('click', inputKey);
+addkey.addEventListener('click', addOp);
 
-
-function showInDisplay(key) {
-  if (key.currentTarget == ac) {
-    return screen.innerText = 0;
+function inputKey(key) {
+  if (currentvalue == '0') {
+    currentvalue = '';
   }
-  return screen.innerText = key.currentTarget.innerText;
+  currentvalue += key.currentTarget.innerText;
+  return screen.innerText = currentvalue;
+}
+
+function clearCalculator() {
+  currentop = 0;
+  currentvalue = 0;
+  priorvalue = 0;
+  screen.innerText = currentvalue;
+
+}
+function addOp() {
+  currentop = 1;
+  priordisplayvalue = currentdisplayvalue;
 }
 
 function add(a, b) {
