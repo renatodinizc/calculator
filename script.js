@@ -28,6 +28,13 @@ let operating = false;
 screen.innerText = currentvalue;
 
 ac.addEventListener('click', clearCalculator);
+addkey.addEventListener('click', addOp);
+subtractkey.addEventListener('click', subtractOp);
+multiplykey.addEventListener('click', multiplyOp);
+dividekey.addEventListener('click', divideOp);
+signkey.addEventListener('click', changeSignOp);
+percentkey.addEventListener('click', percentOp);
+decimalkey.addEventListener('click', decimalOp);
 equalskey.addEventListener('click', operate);
 
 zero.addEventListener('click', inputKey);
@@ -40,12 +47,13 @@ six.addEventListener('click', inputKey);
 seven.addEventListener('click', inputKey);
 eight.addEventListener('click', inputKey);
 nine.addEventListener('click', inputKey);
-addkey.addEventListener('click', addOp);
 
 function inputKey(key) {
   if (currentvalue == '0') {
     currentvalue = '';
   } else if (operating) {
+    currentvalue = '';
+  } else if (currentvalue == 'ERROR!') {
     currentvalue = '';
   }
   operating = false;
@@ -63,14 +71,62 @@ function clearCalculator() {
 function operate() {
   switch (currentop) {
     case 1:
-      currentvalue = add(currentvalue, priorvalue);
+      currentvalue = add(priorvalue, currentvalue);
+      screen.innerText = currentvalue;
+      break;
+    case 2:
+      currentvalue = subtract(priorvalue, currentvalue);
+      screen.innerText = currentvalue;
+      break;
+    case 3:
+      currentvalue = multiply(priorvalue, currentvalue);
+      screen.innerText = currentvalue;
+      break;
+    case 4:
+      currentvalue = divide(priorvalue, currentvalue);
       screen.innerText = currentvalue;
       break;
   }
 }
 
+function changeSignOp() {
+  currentvalue = (-1) * currentvalue;
+  screen.innerText = currentvalue;
+}
+
+function percentOp() {
+  currentvalue = currentvalue / 100;
+  screen.innerText = currentvalue;
+}
+
+function decimalOp() {
+  if (currentvalue.includes('.')) {
+    return;
+  }
+  currentvalue += '.';
+  screen.innerText = currentvalue;
+}
+
 function addOp() {
   currentop = 1;
+  priorvalue = currentvalue;
+  operating = true;
+}
+
+function subtractOp() {
+  currentop = 2;
+  priorvalue = currentvalue;
+  operating = true;
+}
+
+function multiplyOp() {
+  currentop = 3;
+  priorvalue = currentvalue;
+  operating = true;
+}
+
+function divideOp() {
+  currentop = 4;
   priorvalue = currentvalue;
   operating = true;
 }
@@ -80,18 +136,18 @@ function add(a, b) {
 }
 
 function subtract(a, b) {
-  return a - b;
+  return +a - +b;
 }
 
 function multiply(a, b) {
-  return a * b;
+  return +a * +b;
 }
 
 function divide(a, b) {
-  if (b == 0) {
+  if (+b == 0) {
     return 'ERROR!';
   } else {
-    return a / b;
+    return +a / +b;
   }
 }
 
