@@ -19,6 +19,10 @@ button {
   background-color: #808080;
 }
 
+button:active {
+  filter: brightness(120%);
+}
+
 #screen {
   color: black;
 }
