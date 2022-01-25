@@ -53,10 +53,10 @@ function inputKey(key) {
     currentvalue = '';
   } else if (operating) {
     currentvalue = '';
+    operating = false;
   } else if (currentvalue == 'ERROR!') {
     currentvalue = '';
   }
-  operating = false;
   currentvalue += key.currentTarget.innerText;
   return screen.innerText = currentvalue;
 }
@@ -108,24 +108,36 @@ function decimalOp() {
 }
 
 function addOp() {
+  if (priorvalue) {
+    operate();
+  }
   currentop = 1;
   priorvalue = currentvalue;
   operating = true;
 }
 
 function subtractOp() {
+  if (priorvalue) {
+    operate();
+  }
   currentop = 2;
   priorvalue = currentvalue;
   operating = true;
 }
 
 function multiplyOp() {
+  if (priorvalue) {
+    operate();
+  }
   currentop = 3;
   priorvalue = currentvalue;
   operating = true;
 }
 
 function divideOp() {
+  if (priorvalue) {
+    operate();
+  }
   currentop = 4;
   priorvalue = currentvalue;
   operating = true;
@@ -149,10 +161,4 @@ function divide(a, b) {
   } else {
     return +a / +b;
   }
-}
-
-
-
-function onScreen(button) {
-
 }
