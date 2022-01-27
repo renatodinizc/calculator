@@ -58,35 +58,8 @@ document.addEventListener('keydown', function(event) {
     currentvalue = '';
   }
 
-  if (event.key == 1) {
-    currentvalue += '1';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 2) {
-    currentvalue += '2';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 3) {
-    currentvalue += '3';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 4) {
-    currentvalue += '4';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 5) {
-    currentvalue += '5';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 6) {
-    currentvalue += '6';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 7) {
-    currentvalue += '7';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 8) {
-    currentvalue += '8';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 9) {
-    currentvalue += '9';
-    return screen.innerText = currentvalue;
-  } else if (event.key == 0) {
-    currentvalue += '0';
+  if (isFinite(event.key)) {
+    currentvalue += event.key;
     return screen.innerText = currentvalue;
   }
 });
@@ -151,37 +124,36 @@ function decimalOp() {
 }
 
 function addOp() {
-  if (priorvalue) {
-    operate();
-  }
+  checkPriorValue();
+  setPriorValueAndOperatingStatus();
   currentop = 1;
-  priorvalue = currentvalue;
-  operating = true;
 }
 
 function subtractOp() {
-  if (priorvalue) {
-    operate();
-  }
+  checkPriorValue();
+  setPriorValueAndOperatingStatus();
   currentop = 2;
-  priorvalue = currentvalue;
-  operating = true;
 }
 
 function multiplyOp() {
-  if (priorvalue) {
-    operate();
-  }
+  checkPriorValue();
+  setPriorValueAndOperatingStatus();
   currentop = 3;
-  priorvalue = currentvalue;
-  operating = true;
 }
 
 function divideOp() {
+  checkPriorValue();
+  setPriorValueAndOperatingStatus();
+  currentop = 4;
+}
+
+function checkPriorValue() {
   if (priorvalue) {
     operate();
   }
-  currentop = 4;
+}
+
+function setPriorValueAndOperatingStatus() {
   priorvalue = currentvalue;
   operating = true;
 }
